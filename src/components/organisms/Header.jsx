@@ -13,6 +13,8 @@ const Header = ({ onSearch, searchValue, onAddContact, onAddDeal, onToggleFilter
   const isContactsPage = location.pathname === "/" || location.pathname === "/contacts";
   const isPipelinePage = location.pathname === "/pipeline";
 
+const isActivitiesPage = location.pathname === "/activities";
+
   const navItems = [
     {
       name: "Contacts",
@@ -25,6 +27,12 @@ const Header = ({ onSearch, searchValue, onAddContact, onAddDeal, onToggleFilter
       path: "/pipeline", 
       icon: "BarChart3",
       active: isPipelinePage
+    },
+    {
+      name: "Activities",
+      path: "/activities",
+      icon: "Activity",
+      active: isActivitiesPage
     }
   ];
 
