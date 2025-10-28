@@ -12,7 +12,8 @@ const [formData, setFormData] = useState({
     company_c: "",
     tags_c: "",
     notes_c: "",
-    photo_url_c: ""
+    photo_url_c: "",
+    science_marks_c: ""
   });
   
   const [errors, setErrors] = useState({});
@@ -27,7 +28,8 @@ setFormData({
         company_c: contact.company_c || "",
         tags_c: contact.tags_c || "",
         notes_c: contact.notes_c || "",
-        photo_url_c: contact.photo_url_c || ""
+        photo_url_c: contact.photo_url_c || "",
+        science_marks_c: contact.science_marks_c || ""
       });
     }
   }, [contact]);
@@ -51,7 +53,7 @@ setFormData({
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) {
+if (!formData.name.trim()) {
       newErrors.name = "Name is required";
     }
 
@@ -67,6 +69,10 @@ setFormData({
 
     if (!formData.company.trim()) {
       newErrors.company = "Company is required";
+    }
+
+    if (formData.science_marks_c && isNaN(Number(formData.science_marks_c))) {
+      newErrors.science_marks_c = "Science marks must be a valid number";
     }
 
     setErrors(newErrors);
@@ -100,11 +106,11 @@ setFormData({
 
 return (
     <form onSubmit={handleSubmit} className="space-y-6 pb-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input
           label="Full Name"
-          name="name"
-          value={formData.name}
+          name="name_c"
+          value={formData.name_c}
           onChange={handleChange}
           error={errors.name}
           placeholder="Enter full name"
@@ -113,9 +119,9 @@ return (
 
         <Input
           label="Email"
-          name="email"
+          name="email_c"
           type="email"
-          value={formData.email}
+          value={formData.email_c}
           onChange={handleChange}
           error={errors.email}
           placeholder="Enter email address"
@@ -124,9 +130,9 @@ return (
 
         <Input
           label="Phone"
-          name="phone"
+          name="phone_c"
           type="tel"
-          value={formData.phone}
+          value={formData.phone_c}
           onChange={handleChange}
           error={errors.phone}
           placeholder="Enter phone number"
@@ -135,12 +141,22 @@ return (
 
         <Input
           label="Company"
-          name="company"
-          value={formData.company}
+          name="company_c"
+          value={formData.company_c}
           onChange={handleChange}
           error={errors.company}
           placeholder="Enter company name"
           required
+        />
+
+        <Input
+          label="Science Marks"
+          name="science_marks_c"
+          type="number"
+          value={formData.science_marks_c}
+          onChange={handleChange}
+          error={errors.science_marks_c}
+          placeholder="Enter science marks"
         />
 
         <Input
