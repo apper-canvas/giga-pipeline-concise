@@ -13,8 +13,9 @@ const [formData, setFormData] = useState({
     tags_c: "",
     notes_c: "",
     photo_url_c: "",
-    science_marks_c: "",
-    history_marks_c: ""
+science_marks_c: "",
+    history_marks_c: "",
+    chemistry_marks_c: ""
   });
   
   const [errors, setErrors] = useState({});
@@ -30,8 +31,9 @@ setFormData({
         tags_c: contact.tags_c || "",
         notes_c: contact.notes_c || "",
         photo_url_c: contact.photo_url_c || "",
-        science_marks_c: contact.science_marks_c || "",
-        history_marks_c: contact.history_marks_c || ""
+science_marks_c: contact.science_marks_c || "",
+        history_marks_c: contact.history_marks_c || "",
+        chemistry_marks_c: contact.chemistry_marks_c || ""
       });
     }
   }, [contact]);
@@ -77,10 +79,13 @@ if (!formData.name_c.trim()) {
       newErrors.science_marks_c = "Science marks must be a valid number";
     }
 
-    if (formData.history_marks_c && isNaN(Number(formData.history_marks_c))) {
+if (formData.history_marks_c && isNaN(Number(formData.history_marks_c))) {
       newErrors.history_marks_c = "History marks must be a valid number";
     }
 
+    if (formData.chemistry_marks_c && isNaN(Number(formData.chemistry_marks_c))) {
+      newErrors.chemistry_marks_c = "Chemistry marks must be a valid number";
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -171,8 +176,17 @@ return (
           type="number"
           value={formData.history_marks_c}
           onChange={handleChange}
-          error={errors.history_marks_c}
+error={errors.history_marks_c}
           placeholder="Enter history marks"
+        />
+        <Input
+          label="Chemistry Marks"
+          type="number"
+          name="chemistry_marks_c"
+          value={formData.chemistry_marks_c}
+          onChange={handleChange}
+          error={errors.chemistry_marks_c}
+          placeholder="Enter chemistry marks"
         />
 
         <Input
