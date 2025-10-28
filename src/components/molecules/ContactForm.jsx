@@ -13,7 +13,8 @@ const [formData, setFormData] = useState({
     tags_c: "",
     notes_c: "",
     photo_url_c: "",
-    science_marks_c: ""
+    science_marks_c: "",
+    history_marks_c: ""
   });
   
   const [errors, setErrors] = useState({});
@@ -29,7 +30,8 @@ setFormData({
         tags_c: contact.tags_c || "",
         notes_c: contact.notes_c || "",
         photo_url_c: contact.photo_url_c || "",
-        science_marks_c: contact.science_marks_c || ""
+        science_marks_c: contact.science_marks_c || "",
+        history_marks_c: contact.history_marks_c || ""
       });
     }
   }, [contact]);
@@ -53,26 +55,30 @@ setFormData({
   const validateForm = () => {
     const newErrors = {};
 
-if (!formData.name.trim()) {
-      newErrors.name = "Name is required";
+if (!formData.name_c.trim()) {
+      newErrors.name_c = "Name is required";
     }
 
-    if (!formData.email.trim()) {
-      newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = "Email is invalid";
+    if (!formData.email_c.trim()) {
+      newErrors.email_c = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email_c)) {
+      newErrors.email_c = "Email is invalid";
     }
 
-    if (!formData.phone.trim()) {
-      newErrors.phone = "Phone is required";
+    if (!formData.phone_c.trim()) {
+      newErrors.phone_c = "Phone is required";
     }
 
-    if (!formData.company.trim()) {
-      newErrors.company = "Company is required";
+    if (!formData.company_c.trim()) {
+      newErrors.company_c = "Company is required";
     }
 
     if (formData.science_marks_c && isNaN(Number(formData.science_marks_c))) {
       newErrors.science_marks_c = "Science marks must be a valid number";
+    }
+
+    if (formData.history_marks_c && isNaN(Number(formData.history_marks_c))) {
+      newErrors.history_marks_c = "History marks must be a valid number";
     }
 
     setErrors(newErrors);
@@ -157,6 +163,16 @@ return (
           onChange={handleChange}
           error={errors.science_marks_c}
           placeholder="Enter science marks"
+/>
+
+        <Input
+          label="History Marks"
+          name="history_marks_c"
+          type="number"
+          value={formData.history_marks_c}
+          onChange={handleChange}
+          error={errors.history_marks_c}
+          placeholder="Enter history marks"
         />
 
         <Input
