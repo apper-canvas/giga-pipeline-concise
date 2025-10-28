@@ -116,13 +116,14 @@ if (formData.history_marks_c && isNaN(Number(formData.history_marks_c))) {
   };
 
 return (
-    <form onSubmit={handleSubmit} className="space-y-6 pb-8">
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <Input
-          label="Full Name"
-          name="name_c"
-          value={formData.name_c}
-          onChange={handleChange}
+<form onSubmit={handleSubmit} className="space-y-6">
+      <div className="max-h-[60vh] overflow-y-auto pb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Input
+            label="Full Name"
+            name="name_c"
+            value={formData.name_c}
+            onChange={handleChange}
           error={errors.name}
           placeholder="Enter full name"
           required
@@ -207,20 +208,21 @@ error={errors.history_marks_c}
           placeholder="Enter photo URL (optional)"
           className="md:col-span-2"
         />
-      </div>
+</div>
 
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          Notes
-        </label>
-        <textarea
-          name="notes"
-          value={formData.notes}
-          onChange={handleChange}
-          rows={4}
-          className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
-          placeholder="Add any additional notes about this contact..."
-        />
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Notes
+          </label>
+          <textarea
+            name="notes"
+            value={formData.notes}
+            onChange={handleChange}
+            rows={4}
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+            placeholder="Add any additional notes about this contact..."
+          />
+        </div>
       </div>
 
       <div className="flex justify-end space-x-3 pt-6 border-t border-gray-200">
